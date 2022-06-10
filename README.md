@@ -38,12 +38,12 @@ When the hero defeats an enemy, he must gain experience. After a certain number 
 - Added an `experience` property in the `Fighter` class, *integer* with the default value 1000 for the hero, and 500 for the monsters.
 - When a monster dies, in addition to disappearing from the map, the number of experience points of the monster will be added to the experience of the hero. To do this, add an `updateExp(exp)` method in fighter which will take the experience of the loser as a parameter and add it to the winner
 
-The hero's level will automatically be deducted from the amount of XP points he has. This level calculation is not really related to the arena. It could be related to the `Fighter` but we will try to respect the first principle SOLID (Single Responsibility Principle) a little better, which encourages to limit the responsibility of a class and avoid having classes which become huge and stuffy. everything.
+The hero's level will automatically be deducted from the amount of XP points he has. This level calculation is not really related to the arena. It wiil be related to the `Fighter`;
 - Start by creating a new `getLevel()` method in `Fighter`. The method will return the level according to the `this.experience`, according to the following formula: `XP / 1000, rounded up to the upper integer = LEVEL ` so at 1500 points of XP, the hero is at level 2; at 6300 points, the hero is at level 7, *etc*.
 To check, look in the Hero's info panel if the information appears correctly.
 
 > Kill a monster or two, and watch your inventory panel. Your number of experience points and your level must change.
 
-- Finally, to make level useful in *gameplay*, make `getStrength()` and `getDexterity()` return strength and dexterity, multiplied by the level of the fighter. So if Heracles has a base strength of 20, at level 1 `getStength()` will return 20, then 40 at level 2, *etc.*
+- Finally, to make level useful in *gameplay*, make `getStrength()` and `getDexterity()` return strength and dexterity, multiplied by the level of the fighter. So if Heracles has a base strength of 20, at level 1 `getStength()` will return 20, then 40 at level 2, *etc.*. Don't forget to change it on the `Fighters` and `Hero` class.
 
 Congratulations, this new workshop is now finished, our hero can go and rest a little before his next mission!
