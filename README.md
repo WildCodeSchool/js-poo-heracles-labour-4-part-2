@@ -16,12 +16,12 @@ In the arena, the herd is made up of four mares that will have to be fought. But
 - Otherwise, the monster is attacked by our hero and suffers the corresponding damage points. The hero's `fight()` method is then used.
 - then, if the monster is within range (use `touchable()` again but from the targeted monster's point of view), the latter responds and attacks the hero in turn.
 - Once the *"fight"* is finished, also use the innerTExt of the `#error` div to display the result of the fight as in episode 2
-```${arena.hero.name} 💙 ${arena.hero.life} 🗡️ ${arena.monsters[index].name} 💙 ${arena.monsters[index].life}``
+```${arena.hero.name} 💙 ${arena.hero.life} 🗡️ ${arena.monsters[index].name} 💙 ${arena.monsters[index].life}```
 
 ## Horse butcher
 
 Heracles must overcome monsters, he can attack and do damage. For the moment, if a monster is "defeated" (hit points <0), it stays on the map and is still attackable. Let's handle this case, still in the `battle()` method
-- using the `isAlive()` method present in `Fighter`, tests after an attack by the hero, if the attacked monster is still alive. If yes, the method continues and the monster then attacks Heracles.
+- using the `isAlive()` method present in `Fighter`, test if the attacked monster is still alive after an attack by the hero. If yes, the method continues and the monster then attacks Heracles.
 - But if the monster is dead following the hero's attack, modify the message sent to display the winner with his remaining life.
 ``` ${arena.hero.name} won 🗡️ ${arena.hero.life} 💙 ${arena.monsters[index].name} is dead !!!```
 Therefore, he will not attack and must also "disappear" from the map, the space where he was thus becoming free.
@@ -35,15 +35,15 @@ Therefore, he will not attack and must also "disappear" from the map, the space 
 ## Experience
 
 When the hero defeats an enemy, he must gain experience. After a certain number of accumulated experience points, he gains a level. This type of mechanism can again be implemented in many different ways. Here is what you will need to do here:
-- Added an `experience` property in the `Fighter` class, *integer* with the default value 1000 for the hero, and 500 for the monsters.
-- When a monster dies, in addition to disappearing from the map, the number of experience points of the monster will be added to the experience of the hero. To do this, add an `updateExp(exp)` method in fighter which will take the experience of the loser as a parameter and add it to the winner
+- Add an `experience` property in the `Fighter` class, *integer* with the default value 1000 for the hero, and 500 for the monsters.
+- When a monster dies, in addition to disappearing from the map, the number of experience points of the monster will be added to the experience of the hero. To do this, add an `updateExp(exp)` method in `Fighter` which will take the experience of the loser as a parameter and add it to the winner
 
-The hero's level will automatically be deducted from the amount of XP points he has. This level calculation is not really related to the arena. It wiil be related to the `Fighter`;
-- Start by creating a new `getLevel()` method in `Fighter`. The method will return the level according to the `this.experience`, according to the following formula: `XP / 1000, rounded up to the upper integer = LEVEL ` so at 1500 points of XP, the hero is at level 2; at 6300 points, the hero is at level 7, *etc*.
+The hero's level will automatically be computed from the amount of XP points he has. This level calculation is not really related to the arena. It wiil be related to the `Fighter`;
+- Start by creating a new `getLevel()` method in `Fighter`. The method will return the level according to `this.experience`, using the following formula: `XP / 1000, rounded up to the upper integer = LEVEL` so at 1500 points of XP, the hero is at level 2; at 6300 points, the hero is at level 7, *etc*.
 To check, look in the Hero's info panel if the information appears correctly.
 
 > Kill a monster or two, and watch your inventory panel. Your number of experience points and your level must change.
 
-- Finally, to make level useful in *gameplay*, make `getStrength()` and `getDexterity()` return strength and dexterity, multiplied by the level of the fighter. So if Heracles has a base strength of 20, at level 1 `getStength()` will return 20, then 40 at level 2, *etc.*. Don't forget to change it on the `Fighters` and `Hero` class.
+- Finally, to make level useful in *gameplay*, make `getStrength()` and `getDexterity()` return strength and dexterity, multiplied by the level of the fighter. So if Heracles has a base strength of 20, at level 1 `getStength()` will return 20, then 40 at level 2, *etc.*. Don't forget to change it on the `Fighter` and `Hero` classes.
 
 Congratulations, this new workshop is now finished, our hero can go and rest a little before his next mission!
