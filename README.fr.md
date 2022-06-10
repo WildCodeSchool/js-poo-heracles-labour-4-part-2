@@ -16,7 +16,7 @@ Sur l'arène, le troupeau est constitué de quatre juments qu'il va falloir comb
 - Sinon, le monstre est attaqué par notre héros et subit les points de dégâts correspondant. La méthode `fight()` du héros est alors utilisée.
 - ensuite, si le monstre est à portée (utilise à nouveau `touchable()` mais du point de vue du monstre ciblé), ce dernier réplique et attaque à son tour le héros.
 - Une fois le *"fight"* terminé, utilise également le innerTExt de la div  `#error` pour afficher le résultat du fight comme lors de l'épisode 2
-	```${arena.hero.name} 💙 ${arena.hero.life} 🗡️  ${arena.monsters[index].name} 💙 ${arena.monsters[index].life}``
+	```${arena.hero.name} 💙 ${arena.hero.life} 🗡️  ${arena.monsters[index].name} 💙 ${arena.monsters[index].life}```
 
 ## Boucherie chevaline
 
