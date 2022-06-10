@@ -148,7 +148,7 @@ class ArenaTemplate extends TemplateRoot {
       ${arenaDiv.join('')}
     </div>`;
 
-    this.render(arenaTemplate)
+    this.render(arenaTemplate);
   }
 
   setFighters(arena, old) {
@@ -172,18 +172,17 @@ class ArenaTemplate extends TemplateRoot {
         event.preventDefault();
 
         const old = arena.move(directions[keyName])
-        this.setFighters(arena, old)
+        this.setFighters(arena, old);
+        this.setMonsterClick(arena);
       }
     });
   }
 
   setMonsterClick(arena) {
     document.querySelectorAll(".monster").forEach(monster => {
-      console.log(monster)
       monster.addEventListener('click', (e) => {
         const index = monster.id.split("_")[1];
         const dead = arena.battle(index)
-        console.log('Monster click', index)
         if (dead) {
           this.setFighters(arena);
         }
