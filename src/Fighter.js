@@ -17,7 +17,7 @@ class Fighter {
   // Lance un combat
   fight(defender) {
     let attackPoints = this.getRandomInt(this.getDamage());
-    let damages = Math.max(attackPoints - this.getDefense(defender), 0);
+    let damages = Math.max(attackPoints - defender.getDefense(), 0)
     defender.life = Math.max(defender.life - damages, 0);
   }
 
