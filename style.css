@@ -35,7 +35,7 @@ body {
 
     margin:0;
     padding-bottom: var(--spacing);
-    background-image: url('../images/background.webp');
+    background-image: url('./images/background.webp');
     background-attachment: fixed;
     font-family: var(--title-font);
     font-size:var(--text-font-size);
@@ -330,7 +330,7 @@ button:hover {
 }
 
 .map div {
-    background-image: url('../images/grass.png');
+    background-image: url('./images/grass.png');
     --grass: rgb(52, 112, 17);
     transform-style: preserve-3d;
     border:1px solid var(--grass);
