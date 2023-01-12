@@ -8,13 +8,11 @@ class Arena {
 
   getDistance(fighter1, fighter2) {
     const dist = Math.sqrt(Math.pow(fighter2.x - fighter1.x, 2) + Math.pow(fighter2.y - fighter1.y, 2)).toFixed(2);
-    console.log(dist)
     return dist
   }
 
   isTouchable(attacker, defender) {
     const touch = this.getDistance(attacker, defender) <= attacker.getRange();
-    console.log(touch)
     return this.getDistance(attacker, defender) <= attacker.getRange()
   }
 

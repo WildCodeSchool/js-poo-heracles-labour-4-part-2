@@ -107,6 +107,7 @@ class ArenaTemplate extends TemplateRoot {
   }
   checkFighters(arena, i, j) {
     let img = '';
+
     arena.monsters.forEach((monster, index) => {
       if (monster.x === i && monster.y === j) {
         img = this.makeMonsterImage(arena, index)
@@ -120,7 +121,10 @@ class ArenaTemplate extends TemplateRoot {
   }
 
   makeHeroImage(arena) {
-    return `<img title="${arena.hero.name}, portée de ${arena.hero.getRange ? arena.hero.getRange() : ""}" alt="${arena.hero.name}" src="${arena.hero.image}" >`
+    if (arena.hero.isAlive()) {
+      return `<img title="${arena.hero.name}, portée de ${arena.hero.getRange ? arena.hero.getRange() : ""}" alt="${arena.hero.name}" src="${arena.hero.image}" >`;
+    }
+    return "";
   }
 
   makeMonsterImage(arena, index) {
@@ -130,7 +134,7 @@ class ArenaTemplate extends TemplateRoot {
       src="${arena.monsters[index].image}"
       title="Distance to ${arena.hero.name} ${arena.getDistance ? arena.getDistance(arena.monsters[index], arena.hero) : ""}"
       class="monster ${arena.isTouchable ? (arena.isTouchable(arena.hero, arena.monsters[index]) ? 'touchable' : 'untouchable') : ""}"
-      >`
+      >`;
     }
     return "";
   }
@@ -148,19 +152,7 @@ class ArenaTemplate extends TemplateRoot {
       ${arenaDiv.join('')}
     </div>`;
 
-    this.render(arenaTemplate);
-  }
-
-  setFighters(arena, old) {
-    if (old) {
-      document.getElementById(`pos${old.x}${old.y}`).innerHTML = "";
-    }
-
-    document.getElementById(`pos${arena.hero.x}${arena.hero.y}`).innerHTML = this.makeHeroImage(arena);
-
-    arena.monsters.forEach((monster, index) => {
-      document.getElementById(`pos${monster.x}${monster.y}`).innerHTML = this.makeMonsterImage(arena, index);
-    });
+    document.getElementById("arena").innerHTML = arenaTemplate;
   }
 
   setMoveEvent(arena) {
@@ -171,8 +163,8 @@ class ArenaTemplate extends TemplateRoot {
       if (keyName in directions) {
         event.preventDefault();
 
-        const old = arena.move(directions[keyName])
-        this.setFighters(arena, old);
+        arena.move(directions[keyName])
+        this.createArena(arena);
         this.setMonsterClick(arena);
       }
     });
@@ -184,7 +176,7 @@ class ArenaTemplate extends TemplateRoot {
         const index = monster.id.split("_")[1];
         const dead = arena.battle(index)
         if (dead) {
-          this.setFighters(arena);
+          this.createArena(arena);
         }
       })
     })

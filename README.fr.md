@@ -12,12 +12,12 @@ Les juments de Diomède sont là, devant toi, les naseaux fumants. Tu peux te d�
 
 Sur l'arène, le troupeau est constitué de quatre juments qu'il va falloir combattre. Mais comment gérer qui attaque qui ? Il y a bien une méthode `fight()` dans `Fighter`, mais un `Fighter` n'a pas connaissance directement des autres combattants, c'est là encore la classe `Arena` qui a cette information. Tu vas donc implémenter une méthode `battle()` directement dans `Arena`. Il est possible d'implémenter une bataille de plusieurs façons, il faut donc choisir des règles. Voici comment le _gameplay_ va se dérouler pour ton jeu :
 
-- le `Hero` choisi sur la carte quel monstre il souhaite attaquer en cliquant dessus. Le clic sur le monstre est déjà implémenté, et un `id` correspondant au monstre choisi est envoyé. Ta méthode `battle(id)` devra donc prendre un unique paramètre `id` qui correspond à l'index du monstre dans le tableau `monsters` de `Arena`.
+- le `Hero` choisi sur la carte quel monstre il souhaite attaquer en cliquant dessus. Le clic sur le monstre est déjà implémenté, et un `index` correspondant au monstre choisi est envoyé. Ta méthode `battle(index)` devra donc prendre un unique paramètre `index` qui correspond à l'index du monstre dans le tableau `monsters` de `Arena`.
 - si le monstre n'est à portée du héros (utilise la méthode `touchable()` pour le vérifier), lance un message d'erreur ('This monster is not touchable, please move first') via le innerText de la div `#error`.
 - Sinon, le monstre est attaqué par notre héros et subit les points de dégâts correspondant. La méthode `fight()` du héros est alors utilisée.
 - Ensuite, si le monstre est à portée (utilise à nouveau `touchable()` mais du point de vue du monstre ciblé), ce dernier réplique et attaque à son tour le héros.
 - Une fois le _"fight"_ terminé, utilise également le innerTExt de la div `#error` pour afficher le résultat du fight comme lors de l'épisode 2
-  `${arena.hero.name} 💙 ${arena.hero.life} 🗡️  ${arena.monsters[index].name} 💙 ${arena.monsters[index].life}`
+  `${this.hero.name} 💙 ${this.hero.life} 🗡️  ${this.monsters[index].name} 💙 ${this.monsters[index].life}`
 
 ## Boucherie chevaline
 
@@ -25,12 +25,12 @@ Héraclès doit venir à bout des monstres, il peut attaquer et faire des dégâ
 
 - à l'aide de la méthode `isAlive()` présente dans `Fighter`, teste après une attaque du héros, si le monstre attaqué est toujours en vie. Si oui la méthode continue et le monstre attaque alors Héraclès.
 - Mais si le monstre est mort suite à l'attaque du héros, modifie le message envoyé pour afficher le vainqueur avec son reste de vie.
-  ` ${arena.hero.name} won 🗡️  ${arena.hero.life} 💙 ${arena.monsters[index].name} is dead !!!`
+  ` ${this.hero.name} won 🗡️  ${this.hero.life} 💙 ${this.monsters[index].name} is dead !!!`
   De ce fait, il n'attaquera pas et doit également "disparaître" de la carte, la case où il se trouvait devenant donc libre.
 
-- Le monstre ou le héros doit alors disparaître de la carte. POur cela, la fonction `battle()` doit renvoyer simplement `true`;
+- Le monstre doit alors disparaître de la carte. Pour cela, la fonction `battle()` doit renvoyer simplement `true`;
 
-- Le monstre a disparu mais notre héros ne peut toujours pas se déplacer sur sa case. Il faut maintenant modifier légèrement notre fonction `move()` pour tester le `isAlive()` du personnage avant d'envoyer notre exception.
+- Le monstre a disparu mais notre héros ne peut toujours pas se déplacer sur sa case. Il faut maintenant modifier légèrement notre fonction `move()` et plus particulièrement notre `checkNoMonster()`, pour savoir si celui si est en vie `isAlive()`.
 
 > Un dernier point maintenant, en fin de `battle()`, nous allons vérifier s’il reste des monstres à battre pour savoir si notre héros a une victoire absolue. Pour cela implémenter une nouvelle méthode `checkBattle()` dans `Arena`. Celle-ci doit renvoyer true si des monstres sont encore vivants et false dans le cas contraire. (utilise la méthode `some()`). Si aucun monstre n'a survécu au massacre, affiche un message de victoire total via `#error`
 
