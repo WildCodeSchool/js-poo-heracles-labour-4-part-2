@@ -26,9 +26,9 @@ Heracles must overcome monsters, he can attack and do damage. For the moment, if
 ``` ${this.hero.name} won 🗡️ ${this.hero.life} 💙 ${this.monsters[index].name} is dead !!!```
 Therefore, he will not attack and must also "disappear" from the map, the space where he was thus becoming free.
 
-- The monster or the hero must then disappear from the map. To do this, the `battle()` function must simply return `true`;
+- The monster must then disappear from the map. To do this, the `battle()` function must simply return `true`;
 
-- The monster has disappeared but our hero still cannot move to its space. We now need to slightly modify our `move()` function to test the `isAlive()` of the character before sending our exception.
+- The monster has disappeared but our hero still cannot move to its space. We now need to slightly modify our `move()` function , and the `checkNoMonster()`in particulary, to check if this one is alive `isAlive()`.
 
 > A last point now, at the end of `battle()`, we will check if there are monsters left to beat to know if our hero has an absolute victory. To do this, implement a new `checkBattle()` method in `Arena`. That should return true if monsters are still alive and false otherwise. (uses the `some()` method). If no monster survived the massacre, display a total victory message via `#error`
 

@@ -28,7 +28,7 @@ Héraclès doit venir à bout des monstres, il peut attaquer et faire des dégâ
   ` ${this.hero.name} won 🗡️  ${this.hero.life} 💙 ${this.monsters[index].name} is dead !!!`
   De ce fait, il n'attaquera pas et doit également "disparaître" de la carte, la case où il se trouvait devenant donc libre.
 
-- Le monstre ou le héros doit alors disparaître de la carte. POur cela, la fonction `battle()` doit renvoyer simplement `true`;
+- Le monstre doit alors disparaître de la carte. Pour cela, la fonction `battle()` doit renvoyer simplement `true`;
 
 - Le monstre a disparu mais notre héros ne peut toujours pas se déplacer sur sa case. Il faut maintenant modifier légèrement notre fonction `move()` pour tester le `isAlive()` du personnage avant d'envoyer notre exception.
 
