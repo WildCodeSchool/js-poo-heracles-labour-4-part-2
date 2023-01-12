@@ -24,9 +24,9 @@ fighterHtml.createTemplate(heracles, mare1);
 
 const arena = new Arena(heracles, [mare1, mare2, mare3, mare4])
 const ArenaHTML = new ArenaTemplate('arena');
-ArenaHTML.createArena(arena);
 ArenaHTML.setMoveEvent(arena);
 ArenaHTML.setMonsterClick(arena);
+ArenaHTML.createArena(arena);
 
 /** No code to implement here, Go on the Arena Class */
 

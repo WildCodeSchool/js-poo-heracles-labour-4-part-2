@@ -30,7 +30,7 @@ Héraclès doit venir à bout des monstres, il peut attaquer et faire des dégâ
 
 - Le monstre doit alors disparaître de la carte. Pour cela, la fonction `battle()` doit renvoyer simplement `true`;
 
-- Le monstre a disparu mais notre héros ne peut toujours pas se déplacer sur sa case. Il faut maintenant modifier légèrement notre fonction `move()` pour tester le `isAlive()` du personnage avant d'envoyer notre exception.
+- Le monstre a disparu mais notre héros ne peut toujours pas se déplacer sur sa case. Il faut maintenant modifier légèrement notre fonction `move()` et plus particulièrement notre `checkNoMonster()`, pour savoir si celui si est en vie `isAlive()`.
 
 > Un dernier point maintenant, en fin de `battle()`, nous allons vérifier s’il reste des monstres à battre pour savoir si notre héros a une victoire absolue. Pour cela implémenter une nouvelle méthode `checkBattle()` dans `Arena`. Celle-ci doit renvoyer true si des monstres sont encore vivants et false dans le cas contraire. (utilise la méthode `some()`). Si aucun monstre n'a survécu au massacre, affiche un message de victoire total via `#error`
 
