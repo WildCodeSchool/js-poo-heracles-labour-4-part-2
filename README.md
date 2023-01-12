@@ -15,15 +15,15 @@ In the arena, the herd is made up of four mares that will have to be fought. But
 - if the monster is not within reach of the hero (use the `touchable()` method to check it), throws an error message ('This monster is not touchable, please move first') via the innerText of the div `#error`.
 - Otherwise, the monster is attacked by our hero and suffers the corresponding damage points. The hero's `fight()` method is then used.
 - then, if the monster is within range (use `touchable()` again but from the targeted monster's point of view), the latter responds and attacks the hero in turn.
-- Once the *"fight"* is finished, also use the innerTExt of the `#error` div to display the result of the fight as in episode 2
-```${arena.hero.name} 💙 ${arena.hero.life} 🗡️ ${arena.monsters[index].name} 💙 ${arena.monsters[index].life}```
+- Once the *"fight"* is finished, also use the innerText of the `#error` div to display the result of the fight as in episode 2
+```${this.hero.name} 💙 ${this.hero.life} 🗡️ ${this.monsters[index].name} 💙 ${this.monsters[index].life}```
 
 ## Horse butcher
 
 Heracles must overcome monsters, he can attack and do damage. For the moment, if a monster is "defeated" (hit points <0), it stays on the map and is still attackable. Let's handle this case, still in the `battle()` method
 - using the `isAlive()` method present in `Fighter`, test if the attacked monster is still alive after an attack by the hero. If yes, the method continues and the monster then attacks Heracles.
 - But if the monster is dead following the hero's attack, modify the message sent to display the winner with his remaining life.
-``` ${arena.hero.name} won 🗡️ ${arena.hero.life} 💙 ${arena.monsters[index].name} is dead !!!```
+``` ${this.hero.name} won 🗡️ ${this.hero.life} 💙 ${this.monsters[index].name} is dead !!!```
 Therefore, he will not attack and must also "disappear" from the map, the space where he was thus becoming free.
 
 - The monster or the hero must then disappear from the map. To do this, the `battle()` function must simply return `true`;

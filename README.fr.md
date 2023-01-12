@@ -17,7 +17,7 @@ Sur l'arène, le troupeau est constitué de quatre juments qu'il va falloir comb
 - Sinon, le monstre est attaqué par notre héros et subit les points de dégâts correspondant. La méthode `fight()` du héros est alors utilisée.
 - Ensuite, si le monstre est à portée (utilise à nouveau `touchable()` mais du point de vue du monstre ciblé), ce dernier réplique et attaque à son tour le héros.
 - Une fois le _"fight"_ terminé, utilise également le innerTExt de la div `#error` pour afficher le résultat du fight comme lors de l'épisode 2
-  `${arena.hero.name} 💙 ${arena.hero.life} 🗡️  ${arena.monsters[index].name} 💙 ${arena.monsters[index].life}`
+  `${this.hero.name} 💙 ${this.hero.life} 🗡️  ${this.monsters[index].name} 💙 ${this.monsters[index].life}`
 
 ## Boucherie chevaline
 
@@ -25,7 +25,7 @@ Héraclès doit venir à bout des monstres, il peut attaquer et faire des dégâ
 
 - à l'aide de la méthode `isAlive()` présente dans `Fighter`, teste après une attaque du héros, si le monstre attaqué est toujours en vie. Si oui la méthode continue et le monstre attaque alors Héraclès.
 - Mais si le monstre est mort suite à l'attaque du héros, modifie le message envoyé pour afficher le vainqueur avec son reste de vie.
-  ` ${arena.hero.name} won 🗡️  ${arena.hero.life} 💙 ${arena.monsters[index].name} is dead !!!`
+  ` ${this.hero.name} won 🗡️  ${this.hero.life} 💙 ${this.monsters[index].name} is dead !!!`
   De ce fait, il n'attaquera pas et doit également "disparaître" de la carte, la case où il se trouvait devenant donc libre.
 
 - Le monstre ou le héros doit alors disparaître de la carte. POur cela, la fonction `battle()` doit renvoyer simplement `true`;
