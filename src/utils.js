@@ -121,7 +121,10 @@ class ArenaTemplate extends TemplateRoot {
   }
 
   makeHeroImage(arena) {
-    return `<img title="${arena.hero.name}, portée de ${arena.hero.getRange ? arena.hero.getRange() : ""}" alt="${arena.hero.name}" src="${arena.hero.image}" >`
+    if (arena.hero.isAlive()) {
+      return `<img title="${arena.hero.name}, portée de ${arena.hero.getRange ? arena.hero.getRange() : ""}" alt="${arena.hero.name}" src="${arena.hero.image}" >`;
+    }
+    return "";
   }
 
   makeMonsterImage(arena, index) {
@@ -131,7 +134,7 @@ class ArenaTemplate extends TemplateRoot {
       src="${arena.monsters[index].image}"
       title="Distance to ${arena.hero.name} ${arena.getDistance ? arena.getDistance(arena.monsters[index], arena.hero) : ""}"
       class="monster ${arena.isTouchable ? (arena.isTouchable(arena.hero, arena.monsters[index]) ? 'touchable' : 'untouchable') : ""}"
-      >`
+      >`;
     }
     return "";
   }
